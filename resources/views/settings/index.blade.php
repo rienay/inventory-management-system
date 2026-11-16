@@ -1,4 +1,4 @@
-<x-app-layout title="Settings">
+<x-app-layout :title="__('Settings')">
     <x-slot name="header">
         <div class="flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-center">
             <h2 class="font-semibold text-xl text-foreground leading-tight">

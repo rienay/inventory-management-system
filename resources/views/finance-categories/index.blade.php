@@ -1,4 +1,4 @@
-<x-app-layout title="Finance Categories">
+<x-app-layout :title="__('Finance Categories')">
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-foreground leading-tight">

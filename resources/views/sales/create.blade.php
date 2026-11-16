@@ -1,4 +1,4 @@
-<x-app-layout title="POS">
+<x-app-layout :title="__('POS')">
     <div class="mx-auto sm:px-6 lg:px-8 py-4"
          x-data="pos()"
          x-init="init()"
@@ -15,7 +15,7 @@
                 <div class="relative z-20 mb-2">
                     <select
                         x-ref="productSelect"
-                        placeholder="Search Products (Name or SKU) [F1]..."
+                        placeholder="{{ __('Search Products (Name or SKU) [F1]...') }}"
                         autocomplete="off"
                     ></select>
                 </div>
@@ -26,13 +26,13 @@
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50 sticky top-0 z-10">
                                 <tr>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product</th>
-                                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
-                                    <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Qty</th>
-                                    <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Unit</th>
-                                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Disc/Unit</th>
-                                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
-                                    <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('Product') }}</th>
+                                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('Price') }}</th>
+                                    <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('Qty') }}</th>
+                                    <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('Unit') }}</th>
+                                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('Disc/Unit') }}</th>
+                                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('Total') }}</th>
+                                    <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('Action') }}</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
@@ -83,8 +83,8 @@
                                         <td colspan="7" class="px-6 py-20 text-center text-gray-500">
                                             <div class="flex flex-col items-center justify-center">
                                                 <svg class="w-12 h-12 text-gray-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                                                <p class="text-base font-medium">Cart is empty</p>
-                                                <p class="text-sm text-gray-400">Search products above to start transaction</p>
+                                                <p class="text-base font-medium">{{ __('Cart is empty') }}</p>
+                                                <p class="text-sm text-gray-400">{{ __('Search products above to start transaction') }}</p>
                                             </div>
                                         </td>
                                     </tr>
@@ -99,16 +99,16 @@
             <div class="w-full lg:w-[30%] flex flex-col bg-white rounded-lg shadow border border-gray-200 h-full">
                 <!-- Header -->
                 <div class="p-4 border-b border-gray-200 bg-gray-50 rounded-t-lg">
-                    <h2 class="text-xs font-bold text-gray-500 uppercase tracking-wide">Payment Details</h2>
+                    <h2 class="text-xs font-bold text-gray-500 uppercase tracking-wide">{{ __('Payment Details') }}</h2>
                 </div>
 
                 <div class="p-4 space-y-6 flex-1 overflow-y-auto">
                     <!-- Customer Section -->
                     <div class="bg-indigo-50 rounded-lg p-4 border border-indigo-100 relative group">
                         <div class="flex justify-between items-start mb-2">
-                            <span class="text-xs font-bold text-indigo-500 uppercase">Customer</span>
+                            <span class="text-xs font-bold text-indigo-500 uppercase">{{ __('Customer') }}</span>
                             <button @click="openCustomerModal()" class="text-[10px] font-semibold text-indigo-600 hover:text-white hover:bg-indigo-600 border border-indigo-200 bg-white px-2 py-1 rounded transition-colors flex items-center">
-                                + New (F4)
+                                + {{ __('New (F4)') }}
                             </button>
                         </div>
 
@@ -117,7 +117,7 @@
                                 <div class="flex justify-between items-center">
                                     <div>
                                         <h3 class="font-bold text-lg text-gray-900" x-text="selectedCustomer.name"></h3>
-                                        <p class="text-sm text-gray-600" x-text="selectedCustomer.phone || 'No Phone'"></p>
+                                        <p class="text-sm text-gray-600" x-text="selectedCustomer.phone || '{{ __('No Phone') }}'"></p>
                                     </div>
                                     <button @click="resetCustomer()" class="text-gray-400 hover:text-red-500">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -127,7 +127,7 @@
                             <div x-show="!selectedCustomer">
                                 <select
                                     x-ref="customerSelect"
-                                    placeholder="Search Customer [F2]..."
+                                    placeholder="{{ __('Search Customer [F2]...') }}"
                                     autocomplete="off"
                                 ></select>
                             </div>
@@ -137,11 +137,11 @@
                     <!-- Totals Section -->
                     <div class="space-y-3">
                         <div class="flex justify-between items-center text-gray-600 text-sm font-medium">
-                            <span>Subtotal</span>
+                            <span>{{ __('Subtotal') }}</span>
                             <span x-text="formatCurrency(subtotal)"></span>
                         </div>
                         <div class="flex justify-between items-center mt-2">
-                             <span class="text-sm font-medium text-gray-500">Discount (Global)</span>
+                             <span class="text-sm font-medium text-gray-500">{{ __('Discount (Global)') }}</span>
                              <div class="relative w-32">
                                 <div class="absolute inset-y-0 flex items-center pointer-events-none" :class="window.currencyPosition === 'left' ? 'left-0 pl-2' : 'right-0 pr-2'">
                                     <span class="text-gray-500 sm:text-xs" x-text="window.currencySymbol"></span>
@@ -157,11 +157,11 @@
                              </div>
                         </div>
                         <div class="flex justify-between text-red-500 text-sm" x-show="totalDiscount > 0">
-                            <span>Total Discount</span>
+                            <span>{{ __('Total Discount') }}</span>
                             <span x-text="'- ' + formatCurrency(totalDiscount)"></span>
                         </div>
                         <div class="flex justify-between items-center pt-4 border-t border-gray-100">
-                            <span class="text-lg font-bold text-gray-800">TOTAL</span>
+                            <span class="text-lg font-bold text-gray-800">{{ __('TOTAL') }}</span>
                             <span class="text-2xl font-extrabold text-blue-600" x-text="formatCurrency(total)"></span>
                         </div>
                     </div>
@@ -169,28 +169,28 @@
                     <!-- Payment Input -->
                     <div class="space-y-4 pt-4 border-t border-gray-200">
                         <div>
-                            <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Payment Method</label>
+                            <label class="block text-xs font-bold text-gray-500 uppercase mb-2">{{ __('Payment Method') }}</label>
                             <div class="grid grid-cols-2 gap-2">
                                 <button
                                     @click="payment.method = 'cash'"
                                     class="px-4 py-2 text-sm font-medium rounded-md border"
                                     :class="payment.method === 'cash' ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm' : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'"
                                 >
-                                    CASH
+                                    {{ __('CASH') }}
                                 </button>
                                 <button
                                     @click="payment.method = 'transfer'"
                                     class="px-4 py-2 text-sm font-medium rounded-md border"
                                     :class="payment.method === 'transfer' ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm' : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'"
                                 >
-                                    TRANSFER
+                                    {{ __('TRANSFER') }}
                                 </button>
                             </div>
                         </div>
 
                         <template x-if="payment.method === 'cash'">
                             <div>
-                                <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Cash Received</label>
+                                <label class="block text-xs font-bold text-gray-500 uppercase mb-1">{{ __('Cash Received') }}</label>
                                 <div class="relative">
                                     <div class="absolute inset-y-0 flex items-center pointer-events-none" :class="window.currencyPosition === 'left' ? 'left-0 pl-3' : 'right-0 pr-3'">
                                         <span class="text-gray-500 font-bold" x-text="window.currencySymbol"></span>
@@ -208,7 +208,7 @@
                                 <!-- Quick Cash Buttons -->
                                 <div class="grid grid-cols-4 gap-2 mt-2">
                                     <button @click="payment.cash_received = total" class="px-2 py-2 bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded text-xs font-bold text-gray-700">
-                                        EXACT
+                                        {{ __('EXACT') }}
                                     </button>
                                     <button @click="payment.cash_received = (parseInt(payment.cash_received) || 0) + 100000" class="px-2 py-2 bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded text-xs font-bold text-gray-700">
                                         +100K
@@ -234,7 +234,7 @@
                                 </div>
                                 <div class="bg-green-50 p-3 rounded-md border border-green-100 flex justify-between items-center mt-2"
                                      :class="change < 0 ? 'bg-red-50 border-red-100 text-red-800' : 'bg-green-50 border-green-100 text-green-800'">
-                                    <span class="text-sm font-medium uppercase" x-text="change < 0 ? 'Due' : 'Change'"></span>
+                                    <span class="text-sm font-medium uppercase" x-text="change < 0 ? '{{ __('Due') }}' : '{{ __('Change') }}'"></span>
                                     <span class="text-xl font-bold"
                                           :class="change < 0 ? 'text-red-700' : 'text-green-700'"
                                           x-text="formatCurrency(Math.abs(change))"></span>
@@ -247,7 +247,7 @@
                                 x-model="payment.notes"
                                 rows="3"
                                 class="block w-full text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 placeholder-gray-400 py-2"
-                                placeholder="Transaction Notes / Address..."
+                                placeholder="{{ __('Transaction Notes / Address...') }}"
                             ></textarea>
                         </div>
                     </div>
@@ -260,18 +260,19 @@
                         class="w-1/3 py-3 text-sm font-bold text-red-600 hover:text-white bg-white border border-red-200 hover:bg-red-600 rounded-lg flex items-center justify-center transition-colors shadow-sm"
                     >
                         <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-                        CANCEL
+                        {{ __('CANCEL') }}
                     </button>
 
                     <button
                         @click="openConfirmation()"
-                        :disabled="isSubmitting || cart.length === 0"
-                        class="w-2/3 flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-lg font-bold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                        :disabled="isSubmitting"
+                        :class="cart.length === 0 ? 'bg-blue-400 opacity-90' : 'bg-blue-600 hover:bg-blue-700'"
+                        class="w-2/3 flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-lg font-bold text-white focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     >
                         <template x-if="isSubmitting">
                             <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                         </template>
-                        <span x-text="isSubmitting ? 'Processing...' : 'PAY (F3)'"></span>
+                        <span x-text="isSubmitting ? '{{ __('Processing...') }}' : '{{ __('PAY (F3)') }}'"></span>
                     </button>
                 </div>
             </div>
@@ -322,146 +323,144 @@
                         this.initCustomerSelect();
                     },
 
-                    initProductSelect() {
-                        if (!this.$refs.productSelect) return;
-
-                        if (this.productTs) {
-                            this.productTs.destroy();
-                            this.productTs = null;
+                    waitForTomSelect(callback) {
+                        if (window.TomSelect) {
+                            callback();
+                        } else {
+                            setTimeout(() => this.waitForTomSelect(callback), 50);
                         }
+                    },
 
-                        this.productTs = new TomSelect(this.$refs.productSelect, {
-                            valueField: 'id',
-                            labelField: 'name',
-                            searchField: ['name', 'sku'],
-                            closeAfterSelect: false,
-                            openOnFocus: true,
-                            preload: 'focus', // UX Improvement
-                            load: (query, callback) => {
-                                this.lastSearchQuery = query;
+                    initProductSelect() {
+                        this.waitForTomSelect(() => {
+                            if (!this.$refs.productSelect) return;
 
-                                fetch('{{ route("ajax.products.search") }}', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                                    },
-                                    body: JSON.stringify({ q: query })
-                                })
-                                    .then(response => response.json())
-                                    .then(json => {
-                                        callback(json);
-                                    }).catch(()=>{
-                                        callback();
-                                    });
-                            },
-                            render: {
-                                option: (item, escape) => {
-                                    return `
-                                        <div class="py-2 px-3 border-b border-gray-100">
-                                            <div class="flex justify-between items-center">
-                                                <div>
-                                                    <div class="font-medium text-gray-900">${escape(item.name)}</div>
-                                                    <div class="text-xs text-gray-500">${escape(item.sku)}</div>
-                                                </div>
-                                                <div class="text-right">
-                                                    <div class="font-bold text-indigo-600">${this.formatCurrency(item.selling_price)}</div>
-                                                    <div class="text-xs ${item.quantity > 0 ? 'text-green-600' : 'text-red-600'}">
-                                                        Stock: ${escape(item.quantity)} ${escape(item.unit?.symbol || '')}
+                            if (this.productTs) {
+                                this.productTs.destroy();
+                                this.productTs = null;
+                            }
+
+                            const self = this;
+                            this.productTs = new TomSelect(this.$refs.productSelect, {
+                                valueField: 'id',
+                                labelField: 'name',
+                                searchField: ['name', 'sku'],
+                                closeAfterSelect: false,
+                                openOnFocus: true,
+                                preload: 'focus',
+                                load: function(query, callback) {
+                                    self.lastSearchQuery = query;
+
+                                    fetch('{{ route("ajax.products.search") }}', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                            'Accept': 'application/json',
+                                            'X-Requested-With': 'XMLHttpRequest',
+                                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                                        },
+                                        body: JSON.stringify({ q: query })
+                                    })
+                                        .then(response => response.json())
+                                        .then(json => {
+                                            callback(json);
+                                        }).catch(() => {
+                                            callback();
+                                        });
+                                },
+                                render: {
+                                    option: (item, escape) => {
+                                        return `
+                                            <div class="py-2 px-3 border-b border-gray-100 hover:bg-indigo-50 cursor-pointer">
+                                                <div class="flex justify-between items-center">
+                                                    <div>
+                                                        <div class="font-medium text-gray-900">${escape(item.name)}</div>
+                                                        <div class="text-xs text-gray-500">${escape(item.sku)}</div>
+                                                    </div>
+                                                    <div class="text-right">
+                                                        <div class="font-bold text-indigo-600">${self.formatCurrency(item.selling_price)}</div>
+                                                        <div class="text-xs ${item.quantity > 0 ? 'text-green-600' : 'text-red-600'}">
+                                                            Stock: ${escape(item.quantity)} ${escape(item.unit?.symbol || '')}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    `;
-                                },
-                                item: (item, escape) => {
-                                    return `<div>${escape(item.name)}</div>`;
-                                }
-                            },
-                            onChange: (value) => {
-                                if (value) {
-                                    const item = this.productTs.options[value];
-                                    if(item) {
-                                        this.addToCart(item);
-
-                                        // Improved Logic: Prevent double input on Enter
-                                        const cleanup = () => {
-                                            this.productTs.clear(true);
-                                            this.productTs.setTextboxValue(this.lastSearchQuery);
-                                            this.productTs.refreshOptions(false);
-                                        };
-
-                                        // Small delay to ensure TS internal "Enter" handling is done
-                                        setTimeout(cleanup, 10);
+                                        `;
+                                    },
+                                    item: (item, escape) => {
+                                        return `<div>${escape(item.name)}</div>`;
                                     }
+                                },
+                                onItemAdd: function(value, item) {
+                                    const data = this.options[value];
+                                    if (data) {
+                                        self.addToCart(data);
+                                    }
+                                    this.clear(true);
+                                    this.focus();
                                 }
-                            }
+                            });
                         });
                     },
 
                     initCustomerSelect() {
-                        if (!this.$refs.customerSelect) return;
+                        this.waitForTomSelect(() => {
+                            if (!this.$refs.customerSelect) return;
 
-                        if (this.customerTs) {
-                            this.customerTs.destroy();
-                            this.customerTs = null;
-                        }
-
-                        this.customerTs = new TomSelect(this.$refs.customerSelect, {
-                            valueField: 'value',
-                            labelField: 'text',
-                            searchField: 'text',
-                            preload: 'focus', // UX Improvement
-                            openOnFocus: true, // UX Improvement
-                            load: (query, callback) => {
-                                var url = '{{ route("ajax.customers.search") }}';
-
-                                fetch(url, {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                                    },
-                                    body: JSON.stringify({ q: query })
-                                })
-                                    .then(response => response.json())
-                                    .then(json => {
-                                        callback(json);
-                                    }).catch(()=>{
-                                        callback();
-                                    });
-                            },
-                            render: {
-                                option: (item, escape) => {
-                                    return `
-                                        <div class="py-2 px-3 hover:bg-indigo-50">
-                                            <div class="font-medium text-gray-900">${escape(item.name)}</div>
-                                            <div class="text-xs text-gray-500">${escape(item.phone || 'No Phone')}</div>
-                                        </div>
-                                    `;
-                                }
-                            },
-                            onChange: (value) => {
-                                if (value) {
-                                    const item = this.customerTs.options[value];
-                                    if(item) {
-                                        // Update selected customer object structure to match what UI expects
-                                        // The UI expects { id, name, phone, ... }
-                                        // Our controller returns { value, text, name, phone }
-                                        // So we map value to id for consistency if needed, or just use item.
-                                        this.selectedCustomer = {
-                                            id: item.value,
-                                            name: item.name,
-                                            phone: item.phone,
-                                            // email and address are not returned by search currently.
-                                            // If needed we should add them to controller.
-                                            email: item.email || '',
-                                            address: item.address || ''
-                                        };
-                                        this.customerTs.clear();
-                                    }
-                                }
+                            if (this.customerTs) {
+                                this.customerTs.destroy();
+                                this.customerTs = null;
                             }
+
+                            const self = this;
+                            this.customerTs = new TomSelect(this.$refs.customerSelect, {
+                                valueField: 'value',
+                                labelField: 'text',
+                                searchField: 'text',
+                                preload: 'focus',
+                                openOnFocus: true,
+                                load: function(query, callback) {
+                                    fetch('{{ route("ajax.customers.search") }}', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                            'Accept': 'application/json',
+                                            'X-Requested-With': 'XMLHttpRequest',
+                                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                                        },
+                                        body: JSON.stringify({ q: query })
+                                    })
+                                        .then(response => response.json())
+                                        .then(json => {
+                                            callback(json);
+                                        }).catch(() => {
+                                            callback();
+                                        });
+                                },
+                                render: {
+                                    option: (item, escape) => {
+                                        return `
+                                            <div class="py-2 px-3 hover:bg-indigo-50 cursor-pointer">
+                                                <div class="font-medium text-gray-900">${escape(item.name)}</div>
+                                                <div class="text-xs text-gray-500">${escape(item.phone || 'No Phone')}</div>
+                                            </div>
+                                        `;
+                                    }
+                                },
+                                onItemAdd: function(value, item) {
+                                    const data = this.options[value];
+                                    if (data) {
+                                        self.selectedCustomer = {
+                                            id: data.value,
+                                            name: data.name,
+                                            phone: data.phone,
+                                            email: data.email || '',
+                                            address: data.address || ''
+                                        };
+                                    }
+                                    this.clear(true);
+                                }
+                            });
                         });
                     },
 
@@ -485,9 +484,9 @@
                         if (existing) {
                             if (existing.quantity < product.quantity) {
                                 existing.quantity++;
-                                this.$dispatch('toast', { message: 'Product already exists. Quantity updated.', type: 'info' });
+                                this.$dispatch('toast', { message: '{{ __('Product already exists. Quantity updated.') }}', type: 'info' });
                             } else {
-                                this.$dispatch('toast', { message: 'Insufficient stock!', type: 'error' });
+                                this.$dispatch('toast', { message: '{{ __('Insufficient stock!') }}', type: 'error' });
                             }
                         } else {
                             if (product.quantity > 0) {
@@ -501,9 +500,9 @@
                                     unit: product.unit ? product.unit.symbol : '',
                                     discount: 0
                                 });
-                                this.$dispatch('toast', { message: 'Product "' + product.name + '" added to cart.', type: 'success' });
+                                this.$dispatch('toast', { message: '{{ __('Product') }} "' + product.name + '" {{ __('added to cart.') }}', type: 'success' });
                             } else {
-                                this.$dispatch('toast', { message: 'Out of Stock!', type: 'error' });
+                                this.$dispatch('toast', { message: '{{ __('Out of Stock!') }}', type: 'error' });
                             }
                         }
                     },
@@ -512,7 +511,7 @@
                         const item = this.cart[index];
                         if (item.quantity > item.max_stock) {
                             item.quantity = item.max_stock;
-                            this.$dispatch('toast', { message: 'Maksimum stok tercapai', type: 'warning' });
+                            this.$dispatch('toast', { message: '{{ __('Maksimum stok tercapai') }}', type: 'warning' });
                         }
                         if (item.quantity < 1) item.quantity = 1;
                     },
@@ -520,7 +519,7 @@
                     removeFromCart(index) {
                         const removedItem = this.cart[index];
                         this.cart.splice(index, 1);
-                        this.$dispatch('toast', { message: 'Product "' + removedItem.name + '" removed from cart.', type: 'info' });
+                        this.$dispatch('toast', { message: '{{ __('Product') }} "' + removedItem.name + '" {{ __('removed from cart.') }}', type: 'info' });
                     },
 
                     // Customer Modal Open
@@ -543,7 +542,8 @@
                     },
 
                     get total() {
-                        return this.subtotal - this.totalDiscount - this.globalDiscount;
+                        const val = this.subtotal - this.totalDiscount - this.globalDiscount;
+                        return val > 0 ? val : 0;
                     },
 
                     get change() {
@@ -622,9 +622,13 @@
 
                     // Confirmation
                     openConfirmation() {
-                        if (this.cart.length === 0) return;
+                        if (this.cart.length === 0) {
+                            this.$dispatch('toast', { message: '{{ __('Cart is empty. Please select a product first.') }}', type: 'warning' });
+                            if (this.productTs) this.productTs.focus();
+                            return;
+                        }
                         if (this.payment.method === 'cash' && this.payment.cash_received < this.total) {
-                            this.$dispatch('toast', { message: 'Insufficient payment!', type: 'error' });
+                            this.$dispatch('toast', { message: '{{ __('Insufficient payment!') }}', type: 'error' });
                             return;
                         }
 
@@ -714,42 +718,42 @@
                 <!-- Header -->
                 <div class="mb-6 space-y-1.5 text-center sm:text-left border-b border-gray-200 pb-4">
                     <h3 class="text-lg font-semibold leading-none tracking-tight text-foreground">
-                        Payment Confirmation
+                        {{ __('Payment Confirmation') }}
                     </h3>
                     <p class="text-sm text-muted-foreground">
-                        Please review transaction details before processing.
+                        {{ __('Please review transaction details before processing.') }}
                     </p>
                 </div>
 
                 <!-- Summary Grid -->
                 <div class="grid gap-4 py-4">
                     <div class="flex items-center justify-between">
-                        <span class="text-sm font-medium text-gray-500">Total Items</span>
+                        <span class="text-sm font-medium text-gray-500">{{ __('Total Items') }}</span>
                         <span class="font-semibold" x-text="cart.reduce((sum, item) => sum + parseInt(item.quantity), 0)"></span>
                     </div>
                     <div class="flex items-center justify-between">
-                        <span class="text-sm font-medium text-gray-500">Subtotal</span>
+                        <span class="text-sm font-medium text-gray-500">{{ __('Subtotal') }}</span>
                         <span class="font-semibold" x-text="formatCurrency(subtotal)"></span>
                     </div>
                     <div class="flex items-center justify-between text-red-600" x-show="totalDiscount > 0">
-                        <span class="text-sm font-medium">Discount</span>
+                        <span class="text-sm font-medium">{{ __('Discount') }}</span>
                         <span class="font-semibold" x-text="'- ' + formatCurrency(totalDiscount)"></span>
                     </div>
                     <div class="flex items-center justify-between text-red-600" x-show="globalDiscount > 0">
-                        <span class="text-sm font-medium">Extra Discount (Global)</span>
+                        <span class="text-sm font-medium">{{ __('Extra Discount (Global)') }}</span>
                         <span class="font-semibold" x-text="'- ' + formatCurrency(globalDiscount)"></span>
                     </div>
                     <div class="flex items-center justify-between border-t border-gray-100 pt-2 mt-2">
-                        <span class="text-lg font-bold">Total Bill</span>
+                        <span class="text-lg font-bold">{{ __('Total Bill') }}</span>
                         <span class="text-lg font-bold text-blue-600" x-text="formatCurrency(total)"></span>
                     </div>
 
                     <div class="flex items-center justify-between border-t border-gray-100 pt-2 mt-2" x-show="payment.method === 'cash'">
-                        <span class="text-sm font-medium text-gray-500">Cash Received</span>
+                        <span class="text-sm font-medium text-gray-500">{{ __('Cash Received') }}</span>
                         <span class="font-semibold" x-text="formatCurrency(payment.cash_received)"></span>
                     </div>
                     <div class="flex items-center justify-between" x-show="payment.method === 'cash'">
-                        <span class="text-sm font-medium text-gray-500">Change</span>
+                        <span class="text-sm font-medium text-gray-500">{{ __('Change') }}</span>
                         <span class="font-bold text-green-600" x-text="formatCurrency(change)"></span>
                     </div>
                 </div>
@@ -758,7 +762,7 @@
                 <div class="mt-6 border-t border-gray-200 pt-4 space-y-4">
                     <!-- Status Selection -->
                     <div>
-                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Sale Status</label>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">{{ __('Sale Status') }}</label>
                         <div class="grid grid-cols-2 gap-2">
                             <button
                                 @click="saleStatus = 'completed'"
@@ -766,7 +770,7 @@
                                 :class="saleStatus === 'completed' ? 'bg-green-600 text-white border-green-600 shadow-sm' : 'bg-white text-gray-700 border-gray-300 hover:bg-green-50'"
                             >
                                 <svg x-show="saleStatus === 'completed'" class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                COMPLETED
+                                {{ __('COMPLETED') }}
                             </button>
                             <button
                                 @click="saleStatus = 'pending'"
@@ -774,7 +778,7 @@
                                 :class="saleStatus === 'pending' ? 'bg-yellow-500 text-white border-yellow-500 shadow-sm' : 'bg-white text-gray-700 border-gray-300 hover:bg-yellow-50'"
                             >
                                 <svg x-show="saleStatus === 'pending'" class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                PENDING
+                                {{ __('PENDING') }}
                             </button>
                         </div>
                     </div>
@@ -789,7 +793,7 @@
                             <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                         </template>
                         <svg x-show="!isSubmitting" class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                        <span x-text="isSubmitting ? 'Processing...' : 'PROCESS SALE'"></span>
+                        <span x-text="isSubmitting ? '{{ __('Processing...') }}' : '{{ __('PROCESS SALE') }}'"></span>
                     </button>
 
                     <x-secondary-button
@@ -797,7 +801,7 @@
                         @click="$dispatch('close-modal', { name: 'confirmation-modal' })"
                         class="w-full justify-center"
                     >
-                        Back
+                        {{ __('Back') }}
                     </x-secondary-button>
                 </div>
             </div>
@@ -866,7 +870,7 @@
                     <div>
                         <x-form-input
                             name="new_name"
-                            label="Full Name"
+                            :label="__('Full Name')"
                             x-model="newCust.name"
                             x-ref="nameInput"
                             required
@@ -879,7 +883,7 @@
                         <div class="w-full sm:w-1/2">
                             <x-form-input
                                 name="new_email"
-                                label="Email"
+                                :label="__('Email')"
                                 type="email"
                                 x-model="newCust.email"
                             />
@@ -888,7 +892,7 @@
                         <div class="w-full sm:w-1/2">
                             <x-form-input
                                 name="new_phone"
-                                label="Phone"
+                                :label="__('Phone')"
                                 x-model="newCust.phone"
                             />
                             <p x-show="errors.phone" x-text="errors.phone" class="text-sm font-medium text-red-600 mt-1" style="display: none;"></p>
@@ -903,7 +907,7 @@
                             x-model="newCust.address"
                             rows="3"
                             class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                            placeholder="Full Address"
+                            placeholder="{{ __('Full Address') }}"
                         ></textarea>
                         <p x-show="errors.address" x-text="errors.address" class="text-sm font-medium text-red-600 mt-1" style="display: none;"></p>
                     </div>
@@ -916,7 +920,7 @@
                             x-model="newCust.notes"
                             rows="3"
                             class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                            placeholder="Additional notes..."
+                            placeholder="{{ __('Additional notes...') }}"
                         ></textarea>
                         <p x-show="errors.notes" x-text="errors.notes" class="text-sm font-medium text-red-600 mt-1" style="display: none;"></p>
                     </div>
@@ -934,7 +938,7 @@
                                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                 </svg>
                             </template>
-                            <span x-text="loading ? 'Saving...' : 'Save Customer'"></span>
+                            <span x-text="loading ? '{{ __('Saving...') }}' : '{{ __('Save Customer') }}'"></span>
                         </x-primary-button>
                     </div>
                 </div>
@@ -951,12 +955,12 @@
                         </svg>
                     </div>
                     <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                        <h3 class="text-lg font-semibold leading-6 text-gray-900" id="modal-title">
-                            Cancel Transaction?
+                        <h3 class="text-lg font-semibold leading-none tracking-tight text-gray-900" id="modal-title">
+                            {{ __('Cancel Transaction?') }}
                         </h3>
                         <div class="mt-2">
                             <p class="text-sm text-gray-500">
-                                Are you sure you want to cancel? All current items and selections will be lost.
+                                {{ __('Are you sure you want to cancel? All current items and selections will be lost.') }}
                             </p>
                         </div>
                     </div>

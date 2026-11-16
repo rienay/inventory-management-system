@@ -55,7 +55,7 @@ class SettingForm extends Component
         $this->isCreating = false;
         $this->key = $setting->key;
         $this->value = $setting->value;
-        $this->label = Str::title(str_replace('_', ' ', $setting->key));
+        $this->label = __(Str::title(str_replace('_', ' ', $setting->key)));
 
         $this->dispatch('open-modal', name: 'setting-form-modal');
     }

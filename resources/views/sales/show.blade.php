@@ -1,4 +1,4 @@
-<x-app-layout title="Sale Details">
+<x-app-layout :title="__('Sale Details')">
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-foreground leading-tight">
@@ -35,28 +35,28 @@
                     <!-- Content Grid -->
                     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                         <!-- Customer -->
-                        <x-detail-item label="Customer" :value="$sale->customer->name ?? 'Guest'">
+                        <x-detail-item :label="__('Customer')" :value="$sale->customer->name ?? __('Guest')">
                             <x-heroicon-o-user class="w-4 h-4 text-gray-400" />
                         </x-detail-item>
 
                         <!-- Invoice -->
-                        <x-detail-item label="Invoice Number" :value="$sale->invoice_number ?? '-'">
+                        <x-detail-item :label="__('Invoice Number')" :value="$sale->invoice_number ?? '-'">
                             <x-heroicon-o-document-text class="w-4 h-4 text-gray-400" />
                         </x-detail-item>
 
                         <!-- Sale Date -->
-                        <x-detail-item label="Sale Date" :value="$sale->sale_date->format('d M Y')">
+                        <x-detail-item :label="__('Sale Date')" :value="$sale->sale_date->format('d M Y')">
                             <x-heroicon-o-calendar class="w-4 h-4 text-gray-400" />
                         </x-detail-item>
 
                         <!-- Payment Method -->
-                        <x-detail-item label="Payment Method" :value="$sale->payment_method->label()">
+                        <x-detail-item :label="__('Payment Method')" :value="$sale->payment_method->label()">
                             <x-heroicon-o-credit-card class="w-4 h-4 text-gray-400" />
                         </x-detail-item>
 
                         <!-- Status -->
                         <div>
-                            <label class="text-sm font-medium leading-none text-gray-500">Status</label>
+                            <label class="text-sm font-medium leading-none text-gray-500">{{ __('Status') }}</label>
                             <div class="mt-1">
                                 <span class="px-2.5 py-0.5 rounded-full text-xs font-medium border {{ $sale->status->color() }}">
                                     {{ $sale->status->label() }}
@@ -67,7 +67,7 @@
 
 
                         <!-- Created By -->
-                        <x-detail-item label="Created By" :value="$sale->creator->name ?? 'Unknown'">
+                        <x-detail-item :label="__('Created By')" :value="$sale->creator->name ?? 'Unknown'">
                             <x-heroicon-o-user class="w-4 h-4 text-gray-400" />
                         </x-detail-item>
                     </div>
@@ -89,13 +89,13 @@
                         <table class="w-full text-sm text-left">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                                 <tr>
-                                    <th class="px-6 py-3">Code</th>
-                                    <th class="px-6 py-3">Product</th>
-                                    <th class="px-6 py-3">Unit</th>
-                                    <th class="px-6 py-3 text-center">Qty</th>
-                                    <th class="px-6 py-3 text-right">Price</th>
-                                    <th class="px-6 py-3 text-right">Discount</th>
-                                    <th class="px-6 py-3 text-right">Subtotal</th>
+                                    <th class="px-6 py-3">{{ __('Code') }}</th>
+                                    <th class="px-6 py-3">{{ __('Product') }}</th>
+                                    <th class="px-6 py-3">{{ __('Unit') }}</th>
+                                    <th class="px-6 py-3 text-center">{{ __('Qty') }}</th>
+                                    <th class="px-6 py-3 text-right">{{ __('Price') }}</th>
+                                    <th class="px-6 py-3 text-right">{{ __('Discount') }}</th>
+                                    <th class="px-6 py-3 text-right">{{ __('Subtotal') }}</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200">
@@ -127,14 +127,14 @@
                             </tbody>
                             <tfoot class="bg-gray-50 font-bold">
                                 <tr>
-                                    <td colspan="6" class="px-6 py-4 text-right">Subtotal</td>
+                                    <td colspan="6" class="px-6 py-4 text-right">{{ __('Subtotal') }}</td>
                                     <td class="px-6 py-4 text-right text-gray-700">
                                         @money($sale->subtotal)
                                     </td>
                                 </tr>
                                 @if($sale->total_discount > 0)
                                     <tr>
-                                        <td colspan="6" class="px-6 py-4 text-right text-red-600">Total Discount (Items)</td>
+                                        <td colspan="6" class="px-6 py-4 text-right text-red-600">{{ __('Total Discount') }}</td>
                                         <td class="px-6 py-4 text-right text-red-600">
                                             - @money($sale->total_discount - $sale->global_discount)
                                         </td>
@@ -142,26 +142,26 @@
                                 @endif
                                 @if($sale->global_discount > 0)
                                     <tr>
-                                        <td colspan="6" class="px-6 py-4 text-right text-red-600">Global Discount (Transaction)</td>
+                                        <td colspan="6" class="px-6 py-4 text-right text-red-600">{{ __('Global Discount') }}</td>
                                         <td class="px-6 py-4 text-right text-red-600">
                                             - @money($sale->global_discount)
                                         </td>
                                     </tr>
                                 @endif
                                 <tr>
-                                    <td colspan="6" class="px-6 py-4 text-right">Total</td>
+                                    <td colspan="6" class="px-6 py-4 text-right">{{ __('Total') }}</td>
                                     <td class="px-6 py-4 text-right text-indigo-600 text-lg">
                                         @money($sale->total)
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="6" class="px-6 py-4 text-right text-gray-600">Cash Received</td>
+                                    <td colspan="6" class="px-6 py-4 text-right text-gray-600">{{ __('Cash Received') }}</td>
                                     <td class="px-6 py-4 text-right text-gray-800">
                                         @money($sale->cash_received)
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="6" class="px-6 py-4 text-right text-gray-600">Change</td>
+                                    <td colspan="6" class="px-6 py-4 text-right text-gray-600">{{ __('Change') }}</td>
                                     <td class="px-6 py-4 text-right text-green-600">
                                         @money($sale->change)
                                     </td>

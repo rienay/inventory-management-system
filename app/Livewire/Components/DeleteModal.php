@@ -30,9 +30,9 @@ class DeleteModal extends Component
         $this->method = $method;
         $this->params = $params;
 
-        if ($title) $this->title = $title;
-        if ($description) $this->description = $description;
-        $this->confirmButtonText = $confirmButtonText;
+        $this->title = $title ?: __('Are you absolutely sure?');
+        $this->description = $description ?: __('This action cannot be undone. This will permanently delete your data.');
+        $this->confirmButtonText = $confirmButtonText === 'Continue' ? __('Continue') : $confirmButtonText;
         $this->confirmButtonClass = $confirmButtonClass ?: 'bg-red-600 text-white hover:bg-red-500';
 
         $this->open = true;

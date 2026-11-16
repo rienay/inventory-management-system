@@ -39,7 +39,7 @@
                 <div class="space-y-1">
                     <label class="text-sm font-medium leading-none text-muted-foreground">{{ __('Notes') }}</label>
                     <p class="text-sm text-foreground font-medium">
-                        {{ $customer->notes ?: 'No notes provided.' }}
+                        {{ $customer->notes ?: __('No notes provided.') }}
                     </p>
                 </div>
 

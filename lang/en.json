@@ -1,0 +1,22 @@
+{
+    "Dashboard": "Dashboard",
+    "Sales": "Sales",
+    "POS": "POS",
+    "Customers": "Customers",
+    "Purchases": "Purchases",
+    "Suppliers": "Suppliers",
+    "Finance": "Finance",
+    "Transactions": "Transactions",
+    "Categories": "Categories",
+    "Users": "Users",
+    "Products": "Products",
+    "Units": "Units",
+    "Settings": "Settings",
+    "Profile": "Profile",
+    "Log Out": "Log Out",
+    "Log in": "Log in",
+    "Login": "Login",
+    "Register": "Register",
+    "Language": "Language"
+}
+

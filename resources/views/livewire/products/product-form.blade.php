@@ -3,10 +3,10 @@
         <!-- Custom Header -->
         <div class="mb-6 space-y-1.5 text-center sm:text-left border-b border-gray-200 pb-4">
             <h3 class="text-lg font-semibold leading-none tracking-tight text-foreground">
-                {{ $isEditing ? 'Edit Product' : 'Create Product' }}
+                {{ $isEditing ? __('Edit Product') : __('Create Product') }}
             </h3>
             <p class="text-sm text-muted-foreground">
-                {{ $isEditing ? 'Make changes to your product here. Click save when you\'re done.' : 'Add a new product to your inventory.' }}
+                {{ $isEditing ? __('Make changes to your product here. Click save when you\'re done.') : __('Add a new product to your inventory.') }}
             </p>
         </div>
 
@@ -55,7 +55,7 @@
                             wire:model="category_id"
                             :url="route('ajax.categories.search')"
                             method="POST"
-                            placeholder="Select Category"
+                            placeholder="{{ __('Select Category') }}"
                             data-initial-label="{{ $categoryName }}"
                         />
                     </div>
@@ -72,7 +72,7 @@
                             wire:model="unit_id"
                             :url="route('ajax.units.search')"
                             method="POST"
-                            placeholder="Select Unit"
+                            placeholder="{{ __('Select Unit') }}"
                             data-initial-label="{{ $unitName }}"
                         />
                     </div>
@@ -148,26 +148,26 @@
 
             <!-- Description -->
             <div class="space-y-2">
-                <x-input-label for="description" value="Description" />
+                <x-input-label for="description" :value="__('Description')" />
                 <textarea
                     id="description"
                     wire:model="description"
                     rows="3"
                     class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    placeholder="Optional description..."
+                    placeholder="{{ __('Optional description...') }}"
                 ></textarea>
                 <x-input-error :messages="$errors->get('description')" />
             </div>
 
             <!-- Notes -->
             <div class="space-y-2">
-                <x-input-label for="notes" value="Internal Notes" />
+                <x-input-label for="notes" :value="__('Internal Notes')" />
                 <textarea
                     id="notes"
                     wire:model="notes"
                     rows="3"
                     class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    placeholder="Internal pricing history & notes..."
+                    placeholder="{{ __('Internal pricing history & notes...') }}"
                 ></textarea>
                 <x-input-error :messages="$errors->get('notes')" />
             </div>
